@@ -1,0 +1,4 @@
+.obsidian/
+*.exe
+*.pdb
+.php-cs-fixer.cache
