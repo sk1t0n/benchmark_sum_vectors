@@ -1,3 +1,5 @@
 * text=auto eol=lf
 
 .php-cs-fixer.dist.php export-ignore
+zig/build.zig linguist-generated
+zig/build.zig.zon linguist-generated
