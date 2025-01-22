@@ -1,4 +1,4 @@
-run: run_python run_ruby run_php83 run_php84 run_go run_rust
+run: run_python run_ruby run_php83 run_php84 run_go run_rust run_zig
 
 run_python:
 	hyperfine --warmup 5 "python sum_vectors.py"
@@ -23,3 +23,9 @@ compile_rust:
 
 run_rust:
 	hyperfine --warmup 5 sum_vectors_rust.exe
+
+compile_zig:
+	cd zig && zig build --release=fast
+
+run_zig:
+	hyperfine --warmup 5 .\zig\zig-out\bin\zig.exe

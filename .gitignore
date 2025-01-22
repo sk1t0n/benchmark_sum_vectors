@@ -2,3 +2,5 @@
 *.exe
 *.pdb
 .php-cs-fixer.cache
+zig-out/
+.zig-cache
