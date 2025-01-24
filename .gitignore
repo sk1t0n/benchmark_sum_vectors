@@ -4,3 +4,6 @@
 .php-cs-fixer.cache
 zig-out/
 .zig-cache
+*.class
+obj/
+bin/

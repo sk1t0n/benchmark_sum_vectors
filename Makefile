@@ -2,6 +2,8 @@ run_benchmark1: run_python run_ruby run_php run_go run_rust run_zig
 
 run_benchmark2: run_deno run_node run_bun run_luajit
 
+run_benchmark3: run_java run_csharp run_cpp run_c
+
 run_python:
 	hyperfine --warmup 5 "python sum_vectors.py"
 
@@ -40,3 +42,27 @@ run_bun:
 
 run_luajit:
 	hyperfine --warmup 5 "luajit sum_vectors.lua"
+
+compile_java:
+	cd java && javac SumVectors.java
+
+run_java:
+	cd java && hyperfine --warmup 5 "java SumVectors"
+
+compile_csharp:
+	cd csharp\SumVectors && dotnet publish
+
+run_csharp:
+	cd csharp\SumVectors\bin\Release\net8.0\publish && hyperfine --warmup 5 SumVectors
+
+compile_cpp:
+	clang++ -O3 -std=c++20 -march=native -o sum_vectors_cpp.exe sum_vectors.cpp
+
+run_cpp:
+	hyperfine --warmup 5 sum_vectors_cpp
+
+compile_c:
+	clang -O3 -o sum_vectors_c.exe sum_vectors.c
+
+run_c:
+	hyperfine --warmup 5 sum_vectors_c

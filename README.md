@@ -14,3 +14,4 @@ make run_php
 
 ![benchmark 1](benchmark1.png)
 ![benchmark 2](benchmark2.png)
+![benchmark 3](benchmark3.png)
