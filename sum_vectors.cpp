@@ -1,26 +1,18 @@
-#include <cstddef>
+#include <algorithm>
 #include <iostream>
+#include <ranges>
 #include <vector>
 
 int main() {
-  const size_t N = 10'000'000;
+    const int N = 10'000'000;
 
-  std::vector<int> a(N), b(N);
+    std::ranges::iota_view<int, int> a(1, N+1);
+    std::ranges::iota_view<int, int> b(1, N+1);
+    std::vector<int> c(N);
 
-  for (size_t i = 0; i < N; ++i) {
-   a[i] = i + 1; 
-   b[i] = i + 1; 
-  }
-
-  for (size_t i = 0; i < N; ++i) {
-    a[i] += b[i];
-  }
-
-  std::cout << "last element = " << a[N - 1] << std::endl;
-
-  std::vector<int>().swap(a);
-  std::vector<int>().swap(b);
-
-  return 0;
+    std::ranges::transform(a, b, c.begin(), std::plus{});
+  
+    std::cout << "last element = " << c[N - 1] << std::endl;
+    return 0;
 }
 
